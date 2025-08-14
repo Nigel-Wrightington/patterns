@@ -37,6 +37,24 @@ export function makeBoard(rows, cols) {
  */
 export function makeTriangle(size) {
   // TODO
+  //size is the number of side rows
+
+  if (typeof size !== "number") return null;
+  if (size <= 0) return [];
+
+  // creates empty array to hold sides of triangle
+  const triangle = [];
+
+  // loop through size array
+  for (let i = 1; i <= size; i++) {
+    //creates new array(the length of i) and fills it with string "_"
+    const row = new Array(i).fill("-");
+
+    // push row variable into triangle array.
+    triangle.push(row);
+  }
+
+  return triangle;
 }
 
 /**
@@ -47,4 +65,29 @@ export function makeTriangle(size) {
  */
 export function countLetter(words, letter) {
   // TODO
+
+  //This is asking how many times a single character appears across an input. That input is letter, and the words is the input of words to sift through counting the letter.
+ 
+  //Start by checking if its a string and if it is only 1 letter we are searching for. Otherwise return 0.
+  if (typeof letter !== "string" || letter.length !== 1) return 0;
+
+
+  //create count variable to store how many times we find the letter across the words.
+  let count = 0;
+
+
+  //This type of loop I am unsure of and had to get help. 
+  //This loops through each word in the words array
+  for (let word of words) {
+
+    //loops through each character in the current word.
+    for (let char of word) {
+
+      //checks if the character matches the letter we are looking for and increments the counter.
+      if (char === letter) {
+        count++;
+      }
+    }
+  }
+  return count;
 }

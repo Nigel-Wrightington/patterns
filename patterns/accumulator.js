@@ -23,6 +23,16 @@ export function sumToN(n) {
  */
 export function factorial(n) {
   // TODO
+  if (typeof n !== "number") return NaN;
+
+  if (n < 0) return undefined;
+  if (n === 0) return 1;
+
+  let sum = 1;
+  for (let i = 1; i <= n; i++) {
+    sum *= i;
+  }
+  return sum;
 }
 
 /**
@@ -33,6 +43,15 @@ export function factorial(n) {
  */
 export function buildNArray(n) {
   // TODO
+
+  if (typeof n !== "number") return null;
+  if (n <= 0) return [];
+
+  const arr = [];
+  for (let i = 1; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
 }
 
 /**
@@ -41,6 +60,15 @@ export function buildNArray(n) {
  */
 export function getLongestString(strings) {
   // TODO
+
+  let longestString = "";
+
+  for (let i = 0; i < strings.length; i++)
+    if (strings[i].length > longestString.length) {
+      longestString = strings[i];
+    }
+
+  return longestString;
 }
 
 /**
@@ -49,6 +77,14 @@ export function getLongestString(strings) {
  */
 export function countPresent(attendance) {
   // TODO
+  let totalPresent = 0;
+
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i] === true) {
+      totalPresent += 1;
+    }
+  }
+  return totalPresent;
 }
 
 /**
@@ -63,4 +99,37 @@ export function countPresent(attendance) {
  */
 export function complementDNA(dna) {
   // TODO
+//if the type of data isnt a string, return null
+  if (typeof dna !== 'string') return null;
+
+  
+ //this creates an object that stores the complements mapping. Use this in place of if/else or switch statements.
+ const complements = {
+    A: 'T',
+    T: 'A',
+    C: 'G',
+    G: 'C'
+  };
+
+  //empty string to store result in
+  let result = '';
+
+  
+  //loops through every chracter in the dna string
+  for (let i = 0; i < dna.length; i++) {
+   
+    //grabs the character at [i] position in the string
+    const base = dna[i];
+
+    //uses the compliments object to find the corresponding base for the current base. if Base is "A" then the compliment will be "T".
+    const complement = complements[base];
+
+    //this adds the complement base to the result, pretty much staged to be returned.
+    result += complement;
+  }
+
+  return result;
+
+
+
 }
